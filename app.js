@@ -66,10 +66,11 @@ boutique.innerHTML= listOfProducts;
 let btns=document.querySelectorAll(".btn-panier");
 
 btns.forEach(function (btn) {
-    let quantité= document.querySelector("#qt")
-    let valeurselectionnee = quantité.options[quantité.selectedIndex].value;
+
 
     btn.addEventListener("click", function() {
+        let quantité= document.querySelector("#qt")
+        let valeurselectionnee = quantité.options[quantité.selectedIndex].value;
         console.log(valeurselectionnee);
         
     })
