@@ -59,14 +59,18 @@ articles.forEach (article=>
   `
 )
 
+
+
 boutique.innerHTML= listOfProducts;
 
 let btns=document.querySelectorAll(".btn-panier");
+
 btns.forEach(function (btn) {
     let quantité= document.querySelector("#qt")
+    let valeurselectionnee = quantité.options[quantité.selectedIndex].value;
 
-    btn.addEventListener("click", function(e) {
-        console.log(quantité.target);
+    btn.addEventListener("click", function() {
+        console.log(valeurselectionnee);
         
     })
 
