@@ -64,13 +64,16 @@ function ajoutPanier (){
     let btns=document.querySelectorAll(".btn-panier");
     btns.forEach (btn => {
         btn.addEventListener ("click", event => {
-           btn.parentElement.parentElement.getAttribute ("id")
+           console.log(btn.parentElement.parentElement.getAttribute ("id"))
            
         })
         
     })
 
 }
+
+
+
 
 
 
