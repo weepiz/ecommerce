@@ -1,7 +1,7 @@
 const boutique=document.querySelector ("#articles")
 
-function Article (value,nom,genre,prix,img, stock) {
-    this.value=value,
+function Article (id,nom,genre,prix,img, stock) {
+    this.id=id,
     this.nom=nom,
     this.genre=genre,
     this.prix=prix,
@@ -24,59 +24,85 @@ articles.push(article1,article2,article3,article4)
 
 function affichageProduits (){
     let listOfProducts='';
-                articles.forEach (function(article) { 
+                articles.forEach (function(article) {
+                    
                     listOfProducts +=
                     `
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 18rem id=${article.id}" >
                     <img src=${article.img} class="card-img-top" alt="">
-                    <div class="card-body">
-                    <h5 class="card-title">${article.nom}</h5>
-                    <p class="card-text">${article.genre}</p>
-                    <p class="card-text">${article.prix}</p>
-                    
-                    <label for="q">Quantité: </label>
-                            <select class="qt" name="q">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                        </select>
-
+                    <div class=" card-body ">
+                        <h5 class="card-title">${article.nom}</h5>
+                        <p class="card-text">${article.genre}</p>
+                        <p class="card-text">${article.prix}</p>
                         
-                        <button  class="btn-panier">Acheter</button>
+                        <label for="q">Quantité: </label>
+                                <select class="qt" name="q">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                            </select>
+
+                            <button   class=" btn-panier btn btn-danger">Acheter</button>
                     </div>
                     
                 </div>
                 `
-                })
+                
 
-
+            })
 
                 boutique.innerHTML= listOfProducts;
 
-                let btns=document.querySelectorAll(".btn-panier");
+function ajoutPanier (){
+    let btns=document.querySelectorAll(".btn-panier");
+    btns.forEach (btn => {
+        btn.addEventListener ("click", event => {
+           btn.parentElement.parentElement.getAttribute ("id")
+           
+        })
+        
+    })
 
-                btns.forEach (btn =>
+}
 
 
-                    btn.addEventListener("click", function() {
-                            let quantité= document.querySelector(".qt")
-                    let valeurselectionnee = quantité.options[quantité.selectedIndex].value;
-                        console.log(valeurselectionnee);
+
+
+
+
+ajoutPanier ()
+
+
+// let quantité= document.querySelector(".qt")
+// let valeurselectionnee = quantité.options[quantité.selectedIndex].value;
+//     console.log(valeurselectionnee);
+
+
+
+
+                // btns.forEach (btn =>
+
+
+                //     btn.addEventListener("click", function() {
+                //             let quantité= document.querySelector(".qt")
+                //     let valeurselectionnee = quantité.options[quantité.selectedIndex].value;
+                //         console.log(valeurselectionnee);
                         
-                    })
+                //     })
 
-                )
+                // )
 
 }
 
 affichageProduits()
+
 
 
 
