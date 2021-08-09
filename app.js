@@ -28,7 +28,7 @@ function affichageProduits (){
                     
                     listOfProducts +=
                     `
-                <div class="card" style="width: 18rem id=${article.id}" >
+                <div class="card" style="width: 18rem" id="${article.id}" >
                     <img src=${article.img} class="card-img-top" alt="">
                     <div class=" card-body ">
                         <h5 class="card-title">${article.nom}</h5>
@@ -49,7 +49,7 @@ function affichageProduits (){
                                     <option value="10">10</option>
                             </select>
 
-                            <button   class=" btn-panier btn btn-danger">Acheter</button>
+                            <button data-id="${article.id}" class=" btn-panier btn btn-danger">Acheter</button>
                     </div>
                     
                 </div>
@@ -64,8 +64,9 @@ function ajoutPanier (){
     let btns=document.querySelectorAll(".btn-panier");
     btns.forEach (btn => {
         btn.addEventListener ("click", event => {
-           console.log(btn.parentElement.parentElement.getAttribute ("id"))
-           
+            const articleId = btn.getAttribute('data-id');
+            const quantitySelection = document.getElementById(articleId).getElementsByTagName('select')[0];
+            console.log(quantitySelection.value);
         })
         
     })
